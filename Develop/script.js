@@ -11,45 +11,50 @@ var generateBtn = document.querySelector("#generate");
 
 
 
-function checkCharacters() {
+function checkCharacters( lengthPass ) {
+  // Define the possible password characters 
+  // Do this in the function so that it erases previous histories of the password every time the function runs
+  let passwordChoices="";
+
+  // Let user select which characters to include in their password
   let userLower = window.confirm("Do you want your password to have lowercase characters? ");
   let userUpper = window.confirm("Do you want your password to have upperrcase characters? ");
   let userNumbers = window.confirm("Do you want your password to have numbers? ");
   let userSpecial = window.confirm("Do you want your password to have special characters? ");
 
+  // Add selected character types to the storage contrainer for possible password characters
   if (userLower === true) {
-    passwordChoices += lowCase
+    passwordChoices += lowCase;
   }
   if (userUpper === true) {
-    passwordChoices += upperCase
+    passwordChoices += upperCase;
   }
   if (userNumbers === true) {
-    passwordChoices += numbers
+    passwordChoices += numbers;
   }
   if (userSpecial === true) {
-    passwordChoices += specChar
+    passwordChoices += specChar;
   }
 
+  // If the user doesn't select any characters --> force them to re-select options
   if (userLower === false && userUpper === false && userNumbers === false && userSpecial === false) {
     checkCharacters();
   } else {
       // define an empty string that will be the password 
-      password = ""
+      let randomPassword = "";
       // Once I have possible list of characters, randomly select the number of characters based on length. Store it in a variable
       for ( i = 0;  i < lengthPass; i++ ) {
         let randomChar = Math.floor( Math.random() * lengthPass );
+        console.log(passwordChoices[randomChar]);
         randomPassword += passwordChoices[randomChar];
       }
       // return the password, this will be calls in the writePassword() function
+      console.log(randomPassword)
       return randomPassword;
   }
 }
 
 function generatePassword () {
-  // Define the possible password characters 
-  // Do this in the function so that it erases previous histories of the password every time the function runs
-  let passwordChoices="";
-
   // Generate the prompt for the length variable (convert it to a number for comparison later)
   let lengthPass = parseInt( window.prompt("Select the length of your password: \n Note: must be longer than 8 characters and shorter than 128.") );
 
@@ -65,7 +70,7 @@ function generatePassword () {
   // Should be a if statement to make sure ATLEAST 1 of the 4 has been checked
   // Javascript confirm --> window.confirm()
   else {
-    checkCharacters()
+    checkCharacters( lengthPass );
   }
 }
 
