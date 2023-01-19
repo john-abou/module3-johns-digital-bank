@@ -78,6 +78,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
+  // Changed the method to .textContent so that the card displays the password for the user.
   passwordText.textContent = password;
 
 }

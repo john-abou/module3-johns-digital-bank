@@ -1,9 +1,9 @@
+/* Universal and general selectors styled for spacing  */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
 html,
 body,
 .wrapper {
@@ -12,24 +12,27 @@ body,
   padding: 0;
 }
 
+
+/* Styling sections in the body */
+/* Choose the font and background color of the page */
 body {
   font-family: sans-serif;
   background-color: #f9fbfd;
 }
-
+/* Adding padding to the container holding the random generator */
 .wrapper {
   padding-top: 30px;
   padding-left: 20px;
   padding-right: 20px;
 }
-
+/* Adding styling and padding to the header above the random generator card */
 header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
   color: hsl(206, 17%, 28%);
 }
-
+/* Styling the card, add color, background color, border, sizing, font size and spacing */
 .card {
   background-color: hsl(0, 0%, 100%);
   border-radius: 5px;
@@ -41,7 +44,6 @@ header {
   max-width: 800px;
   padding: 30px 40px;
 }
-
 .card-header::after {
   content: " ";
   display: block;
@@ -49,15 +51,12 @@ header {
   background: #e7e9eb;
   height: 2px;
 }
-
 .card-body {
   min-height: 100px;
 }
-
 .card-footer {
   text-align: center;
 }
-
 .card-footer::before {
   content: " ";
   display: block;
@@ -65,13 +64,13 @@ header {
   background: #e7e9eb;
   height: 2px;
 }
-
 .card-footer::after {
   content: " ";
   display: block;
   clear: both;
 }
 
+/* Styling the button - spacing, font size, border, color, etc. */
 .btn {
   border: none;
   background-color: hsl(360, 91%, 36%);
@@ -87,16 +86,15 @@ header {
   text-align: center;
   cursor: pointer;
 }
-
 button[disabled] {
   cursor: default;
   background: #c0c7cf;
 }
-
 .float-right {
   float: right;
 }
 
+/* Styling the textarea for when the password gets displayed -- spacing, color, border, etc. */
 #password {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -118,13 +116,7 @@ button[disabled] {
   overflow: hidden;
 }
 
-footer {
-  color: hsl(206, 17%, 28%);
-  font-size: 16px;
-  text-align: center;
-  width: 100%;
-}
-
+/* Making the website responsive */
 @media (max-width: 690px) {
   .btn {
     font-size: 1rem;
