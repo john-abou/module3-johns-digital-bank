@@ -76,7 +76,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   // Changed the method to .textContent so that the card displays the password for the user.
-  passwordText.textContent = password;
+  passwordText.textContent = "Your password is: \n" + password;
 }
 
 // Add event listener to generate button
