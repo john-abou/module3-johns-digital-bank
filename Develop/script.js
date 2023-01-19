@@ -56,16 +56,12 @@ function generatePassword () {
     let posssibleCharacters = checkCharacters();
     let randomPassword = "";
 
-    //Shuffle the possibleCharacters so that if the password is small (9 characters), it is not just one character type
-    let shuffledPossibleCharacters = posssibleCharacters.split('').sort(function(){return 0.5-Math.random()}).join('');
-
     // Randomly select the number of characters based on length and add them to the empty string
     for ( i = 0;  i < lengthPass; i++ ) {
-      let randomChar = Math.floor( Math.random() * lengthPass );
-      randomPassword += shuffledPossibleCharacters[randomChar];
+      let randomChar = Math.floor( Math.random() * posssibleCharacters.length );
+      randomPassword += posssibleCharacters[randomChar];
     }
     // return the password, this will be calls in the writePassword() function
-    console.log(randomPassword)
     return randomPassword;
   }
 }
@@ -78,8 +74,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   // Changed the method to .innerHTML so that the card displays the password for the user.
-  console.log(passwordText)
-  passwordText.innerHTML = password;
+  window.alert("Your password is: \n" + password);
 }
 
 // Add event listener to generate button
