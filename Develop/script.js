@@ -10,8 +10,8 @@ let specChar = '!"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
 var generateBtn = document.querySelector("#generate");
 
 
-
-function checkCharacters( lengthPass ) {
+// function to define the password characters to be used in the random generator.
+function checkCharacters( ) {
   // Define the possible password characters 
   // Do this in the function so that it erases previous histories of the password every time the function runs
   let passwordChoices="";
@@ -40,17 +40,8 @@ function checkCharacters( lengthPass ) {
   if (userLower === false && userUpper === false && userNumbers === false && userSpecial === false) {
     checkCharacters();
   } else {
-      // define an empty string that will be the password 
-      let randomPassword = "";
-      // Once I have possible list of characters, randomly select the number of characters based on length. Store it in a variable
-      for ( i = 0;  i < lengthPass; i++ ) {
-        let randomChar = Math.floor( Math.random() * lengthPass );
-        console.log(passwordChoices[randomChar]);
-        randomPassword += passwordChoices[randomChar];
-      }
-      // return the password, this will be calls in the writePassword() function
-      console.log(randomPassword)
-      return randomPassword;
+
+    return passwordChoices;
   }
 }
 
@@ -58,19 +49,25 @@ function generatePassword () {
   // Generate the prompt for the length variable (convert it to a number for comparison later)
   let lengthPass = parseInt( window.prompt("Select the length of your password: \n Note: must be longer than 8 characters and shorter than 128.") );
 
-  //  Run an if statement to make sure the input is valid
+  //  Run an if statement to make sure the input is valid. If it is valid, run it through the checkCharacters
   if (lengthPass <= 8) {
     generatePassword();
   } else if (lengthPass >= 128) {
     generatePassword();
-  }
+  } else {
+    //define an emptry string to be used for the password and get the possible list of characters for the password from checkCharacters() function.
+    let posssibleCharacters = checkCharacters();
+    let randomPassword = "";
 
-  // Store the prompts for lower/upper/special/numbers
-  // Prompts should be booleans
-  // Should be a if statement to make sure ATLEAST 1 of the 4 has been checked
-  // Javascript confirm --> window.confirm()
-  else {
-    checkCharacters( lengthPass );
+    // Randomly select the number of characters based on length and add them to the empty string
+    for ( i = 0;  i < lengthPass; i++ ) {
+      let randomChar = Math.floor( Math.random() * lengthPass );
+      console.log(posssibleCharacters[randomChar]);
+      randomPassword += posssibleCharacters[randomChar];
+    }
+    // return the password, this will be calls in the writePassword() function
+    console.log(randomPassword)
+    return randomPassword;
   }
 }
 
@@ -81,7 +78,7 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+  passwordText.textContent = password;
 
 }
 
