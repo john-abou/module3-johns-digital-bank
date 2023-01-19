@@ -1,10 +1,8 @@
-// Defint the possible characters that can be choosen to be included in the password generator
+// Define the possible characters that can be choosen to be included in the password generator
 let lowCase = "abcdefghijklmnopqrstuvwxyz";
 let upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let numbers = "0123456789";
 let specChar = '!"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
-
-
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -40,7 +38,6 @@ function checkCharacters( ) {
   if (userLower === false && userUpper === false && userNumbers === false && userSpecial === false) {
     checkCharacters();
   } else {
-
     return passwordChoices;
   }
 }
@@ -80,7 +77,6 @@ function writePassword() {
 
   // Changed the method to .textContent so that the card displays the password for the user.
   passwordText.textContent = password;
-
 }
 
 // Add event listener to generate button
